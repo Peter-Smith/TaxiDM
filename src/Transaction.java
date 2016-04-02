@@ -43,6 +43,7 @@ public class Transaction {
 		
 	}
 	
+	//Groups of approximately one standard deviation, with plenty of room for outliers
 	private void fare(Map<String,String> src){
 		Double fare = Double.parseDouble((String) src.get(" fare_amount"));
 		if(fare >= 50){
@@ -72,6 +73,7 @@ public class Transaction {
 		int trip_time_in_secs = Integer.parseInt(src.get("trip_time_in_secs"));	
 	}
 	
+	//Categories here are kinda arbitrary, some stats would be nice
 	private void tip_amount(Map<String,String> src){
 		Double tip = Double.parseDouble(src.get(" tip_amount"));
 		if(tip >= 10){
@@ -97,6 +99,7 @@ public class Transaction {
 		}
 	}
 	
+	//CSH or CRD, we can output this right through
 	private void payment_type(Map<String,String> src){
 		contents.put("payment_type", src.get(" payment_type"));
 	}
