@@ -42,9 +42,6 @@ public class Transaction {
 	}
 	
 	private void fare(Map<String,String> src){
-		System.out.println(src);
-		System.out.println(src.containsKey(" fare_amount"));
-		System.out.println(src.get(" fare_amount"));
 		Double fare = Double.parseDouble((String) src.get(" fare_amount"));
 		if(fare >= 50){
 			contents.put("fare", "50+");
