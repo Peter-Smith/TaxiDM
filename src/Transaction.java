@@ -14,6 +14,8 @@ public class Transaction {
 	private void fillContents(Map<String,String> src){
 	passengerCount(src);
 	fare(src);
+	payment_type(src);
+	tip_amount(src);
 	//add other fns as necessary for each desired category, massaging as needed
 	}
 	
@@ -44,26 +46,59 @@ public class Transaction {
 	private void fare(Map<String,String> src){
 		Double fare = Double.parseDouble((String) src.get(" fare_amount"));
 		if(fare >= 50){
-			contents.put("fare", "50+");
+			contents.put("fare", "50$+");
 		}
 		else if(fare > 40){
-			contents.put("fare", "40-50");
+			contents.put("fare", "40-50$");
 		}
 		else if(fare > 30){
-			contents.put("fare", "30-40");
+			contents.put("fare", "30-40$");
 		}
 		else if(fare > 20){
-			contents.put("fare", "20-30");
+			contents.put("fare", "20-30$");
 		}
 		else if(fare > 10){
-			contents.put("fare", "10-20");
+			contents.put("fare", "10-20$");
 		}
 		else if(fare > 0){
-			contents.put("fare", "0-10");
+			contents.put("fare", "0-10$");
 		}
 		else{
 			surprise("fare",src);
 		}
+	}
+	
+	private void trip_time(Map<String,String> src){
+		int trip_time_in_secs = Integer.parseInt(src.get("trip_time_in_secs"));	
+	}
+	
+	private void tip_amount(Map<String,String> src){
+		Double tip = Double.parseDouble(src.get(" tip_amount"));
+		if(tip >= 10){
+			contents.put("tip", "10$+");
+		}
+		else if(tip > 5){
+			contents.put("tip", "5-10$");
+		}
+		else if(tip > 3){
+			contents.put("tip", "3-5$");
+		}
+		else if(tip > 1){
+			contents.put("tip", "1-3$");
+		}
+		else if(tip > 0){
+			contents.put("tip", "0-1$");
+		}
+		else if(tip == 0){
+			contents.put("tip", "0$");
+		}
+		else{
+			surprise("tip",src);
+		}
+	}
+	
+	private void payment_type(Map<String,String> src){
+		contents.put("payment_type", src.get(" payment_type"));
 	}
 	
 	
