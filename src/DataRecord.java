@@ -59,7 +59,7 @@ public class DataRecord {
 			attributeLine2 = sc2.nextLine();
 			
 			Iterator<String>attIter1 = Arrays.asList(attributeLine1.split(",")).iterator();
-			Iterator<String>attIter2 = Arrays.asList(attributeLine1.split(",")).iterator();
+			Iterator<String>attIter2 = Arrays.asList(attributeLine2.split(",")).iterator();
 			while(attIter1.hasNext()){
 				attList.add(attIter1.next());
 			}
@@ -78,7 +78,7 @@ public class DataRecord {
 				
 				
 				List<String> itemsList1 = Arrays.asList(contentLine1.split(","));
-				List<String> itemsList2 = Arrays.asList(contentLine1.split(","));
+				List<String> itemsList2 = Arrays.asList(contentLine2.split(","));
 				
 				Iterator<String> itemsIter1 = itemsList1.iterator();
 				Iterator<String> itemsIter2 = itemsList2.iterator();

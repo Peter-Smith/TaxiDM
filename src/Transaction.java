@@ -13,6 +13,7 @@ public class Transaction {
 	
 	private void fillContents(Map<String,String> src){
 	passengerCount(src);
+	fare(src);
 	//add other fns as necessary for each desired category, massaging as needed
 	}
 	
@@ -39,6 +40,36 @@ public class Transaction {
 		}
 		
 	}
+	
+	private void fare(Map<String,String> src){
+		System.out.println(src);
+		System.out.println(src.containsKey(" fare_amount"));
+		System.out.println(src.get(" fare_amount"));
+		Double fare = Double.parseDouble((String) src.get(" fare_amount"));
+		if(fare >= 50){
+			contents.put("fare", "50+");
+		}
+		else if(fare > 40){
+			contents.put("fare", "40-50");
+		}
+		else if(fare > 30){
+			contents.put("fare", "30-40");
+		}
+		else if(fare > 20){
+			contents.put("fare", "20-30");
+		}
+		else if(fare > 10){
+			contents.put("fare", "10-20");
+		}
+		else if(fare > 0){
+			contents.put("fare", "0-10");
+		}
+		else{
+			surprise("fare",src);
+		}
+	}
+	
+	
 	
 	private void surprise(String surprisingThing, Map src){
 		System.out.println("SURPRISE ALERT in "+surprisingThing);
